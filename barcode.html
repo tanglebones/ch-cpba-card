@@ -4,6 +4,9 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
     <script type="text/javascript" src="jquery-barcode-2.0.2.js"></script>
     <script type="text/javascript">
+function urldecode(str) {
+  return decodeURIComponent((str+'').replace(/\+/g, '%20'));
+}
 $.extend({
   getUrlVars: function(){
     var vars = [], hash;
@@ -12,12 +15,9 @@ $.extend({
     {
       hash = hashes[i].split('=');
       vars.push(hash[0]);
-      vars[hash[0]] = hash[1];
+      vars[hash[0]] = urldecode(hash[1]);
     }
     return vars;
-  },
-  getUrlVar: function(name){
-    return $.getUrlVars()[name];
   }
 });
 
@@ -43,8 +43,8 @@ $(document).ready(function() {
       Text:
       <input type="text" id="data" name="data"></input><br/>
     </form>
-    code128<br/><div id="btcode128"></div> <br/>
-    code39 (forced to uppercase)<br/><div id="btcode39"></div> <br/>
-    ean13 (must be exactly 12 digits)<br/><div id="btean13"></div> <br/>
+    code128<br/><div id="btcode128"></div> <br/><br/><br/><br/><br/><br/>
+    code39 (forced to uppercase)<br/><div id="btcode39"></div> <br/><br/><br/><br/><br/><br/>
+    ean13 (must be exactly 12 digits)<br/><div id="btean13"></div> <br/><br/><br/><br/><br/><br/>
   </body>
 </html>
